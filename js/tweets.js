@@ -39,16 +39,12 @@ $(document).ready(function(){
 		if ($(this).val().length <= 0)
 		{
 			revealTweetControls(this);
-			// customDropDown(this);
-			// $("#tweet-controls").slideToggle(200);
 		}
 	});
 	$("#tweet-content .tweet-compose").focusout(function(){
 		if($(this).val().length <= 0)
 		{
 			hideTweetControls(this);
-			// customSlideUp(this);
-			// $("#tweet-controls").slideToggle(200);
 		}
 	});
 
@@ -85,12 +81,14 @@ $(document).ready(function(){
 	// Post tweet
 	/*******************************************/
 	function doPost(tweetText){
+		//Generate a timestamp
+		// var timestamp = jQuery.timeago(new Date());
 		var postHTML = "<article class=\"tweet\">\
 						<div class=\"content\">\
 							<img class=\"avatar\" src=\"" + userInfo.img + "\" />\
 							<strong class=\"fullname\">" + userInfo.name + "</strong>\
 							<span class=\"username\">" + userInfo.username + "</span>\
-\
+							<i class=\"fa fa-star-o fa-star\"></i>\
 							<p class=\"tweet-text\">" + tweetText + "</p>\
 \
 							<div class=\"tweet-actions\">\
@@ -119,9 +117,8 @@ $(document).ready(function(){
 									</div>\
 								</div>\
 \
-								<div class=\"time\">\
-									1:04 PM - 19 Sep 13\
-								</div>\
+								<abbr class=\"timeago\" title=\"2014-04-04T09:35:00Z\">\
+								</abbr>\
 							</div>\
 							<div class=\"reply\">\
 								<img class=\"avatar\" src=\"img/alagoon.jpg\" />\
@@ -130,6 +127,7 @@ $(document).ready(function(){
 						</div>\
 					</article><!-- .tweet -->";
 		$("#stream").prepend(postHTML);
+		$("abbr.timeago").timeago(); //Refresh the timeago plugin
 	}
 
 		//Post Tweet button clicked
@@ -140,7 +138,7 @@ $(document).ready(function(){
 			doPost($(tweetConsole).val());
 			//Clear previous text
 			$(tweetConsole).val("");
-			customSlideUp($(tweetConsole));
+			hideTweetControls($(tweetConsole));
 		}
 	});
 	
@@ -166,9 +164,17 @@ $(document).ready(function(){
 		$("div.reply", this).slideToggle();
 	});
 
+	/*******************************************/
+	// Timeago plugin
+	/*******************************************/
+	$("abbr.timeago").timeago();
 
-
-
-
-
+	/*******************************************/
+	// Favorite star
+	/*******************************************/
+	$("#stream").on("click", ".fa-star-o, .fa-star", function(event){
+		$(this).toggleClass("fa-star-o", "fa-star");
+		$(this).css("cursor", "pointer");
+		$(this).css("color", "gold");
+	});
 });
