@@ -160,7 +160,6 @@ $(document).ready(function(){
 	/*******************************************/
 
 	$("#stream").on("click", '.tweet', function(event){
-		//Skip this event if clicking on the "Favorite" icon
 		if($(event.target).hasClass("fa") == false)
 		{
 			$("div.stats", this).slideToggle();
@@ -188,11 +187,12 @@ $(document).ready(function(){
 	function setTitle(node){
 		return $(node).attr("src");
 	}
-	$(".hasTooltip").tooltip();
+	$(".hasTooltip").tooltip({
+		title: "setTitle()"
+	});
 	$(".hasTooltip").on("mouseenter", function(event){
-		$(event.target).tooltip()
-					.attr('data-original-title', setTitle($(event.target)))
-			          .tooltip('fixTitle')
-			          .tooltip('show');
+		$(event.target).tooltip({
+			title: setTitle($(event.target))
+		})
 	});
 });
