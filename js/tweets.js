@@ -88,7 +88,6 @@ $(document).ready(function(){
 							<img class=\"avatar\" src=\"" + userInfo.img + "\" />\
 							<strong class=\"fullname\">" + userInfo.name + "</strong>\
 							<span class=\"username\">" + userInfo.username + "</span>\
-							<i class=\"fa fa-star-o fa-star\"></i>\
 							<p class=\"tweet-text\">" + tweetText + "</p>\
 \
 							<div class=\"tweet-actions\">\
@@ -191,8 +190,8 @@ $(document).ready(function(){
 	$(".hasTooltip").tooltip();
 	$(".hasTooltip").on("mouseenter", function(event){
 		$(event.target).tooltip()
-					.attr('data-original-title', setTitle($(event.target)))
-			          .tooltip('fixTitle')
-			          .tooltip('show');
+					   .attr('data-original-title', setTitle($(event.target)))
+			           .tooltip('fixTitle')
+			           .tooltip('show');
 	});
 });
