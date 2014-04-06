@@ -175,7 +175,7 @@ body {
 
 	.tweet-actions {
 		text-align: right;
-		display: none;
+		visibility: hidden;
 	}
 		.tweet-actions ul {
 			list-style-type: none;

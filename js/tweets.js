@@ -148,11 +148,11 @@ $(document).ready(function(){
 	$("#stream").on("mouseenter", '.tweet', function(event){
 		// Show tweet actions
 		// NOTE ---> Use "this" to define the context of the selector
-		$('.tweet-actions', this).show();
+		$('.tweet-actions', this).css("visibility", "visible");
 	});
 	$("#stream").on("mouseleave", '.tweet', function(event){
 		//Hide tweet actions
-		$('.tweet-actions', this).hide();
+		$('.tweet-actions', this).css("visibility", "hidden");
 	});
 
 	/*******************************************/
@@ -166,6 +166,12 @@ $(document).ready(function(){
 			$("div.stats", this).slideToggle();
 			$("div.reply", this).slideToggle();
 		}
+	});
+
+	//Collapse the tweet after the mouse leaves the tweet
+	$("#stream").on("mouseleave", '.tweet', function(event){
+		$("div.stats", this).delay(500).slideUp();
+		$("div.reply", this).delay(500).slideUp();
 	});
 
 	/*******************************************/
