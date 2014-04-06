@@ -81,8 +81,6 @@ $(document).ready(function(){
 	// Post tweet
 	/*******************************************/
 	function doPost(tweetText){
-		//Generate a timestamp
-		// var timestamp = jQuery.timeago(new Date());
 		var postHTML = "<article class=\"tweet\">\
 						<div class=\"content\">\
 							<img class=\"avatar\" src=\"" + userInfo.img + "\" />\
@@ -185,7 +183,6 @@ $(document).ready(function(){
 	$("#stream").on("click", ".fa-star-o, .fa-star", function(event){
 		$(this).toggleClass("fa-star-o", "fa-star");
 		$(this).css("cursor", "pointer");
-		// if($())
 		$(this).css("color", "gold");
 	});
 
