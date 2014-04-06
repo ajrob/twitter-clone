@@ -88,13 +88,14 @@ $(document).ready(function(){
 							<img class=\"avatar\" src=\"" + userInfo.img + "\" />\
 							<strong class=\"fullname\">" + userInfo.name + "</strong>\
 							<span class=\"username\">" + userInfo.username + "</span>\
+							<i class=\"fa fa-star-o fa-star\"></i>\
 							<p class=\"tweet-text\">" + tweetText + "</p>\
 \
 							<div class=\"tweet-actions\">\
 								<ul>\
 									<li><span class=\"icon action-reply\"></span> Reply</li>\
 									<li><span class=\"icon action-retweet\"></span> Retweet</li>\
-									<li><span class=\"icon action-favorite\"></span> Favorite</li>\
+									<li class=\"favorite\"><span class=\"icon action-favorite\"></span> Favorite</li>\
 									<li><span class=\"icon action-more\"></span> More</li>\
 								</ul>\
 							</div>\
@@ -160,7 +161,7 @@ $(document).ready(function(){
 
 	$("#stream").on("click", '.tweet', function(event){
 		//Skip this event if clicking on the "Favorite" icon
-		if($(event.target).hasClass("fa") == false)
+		if($(event.target).hasClass("favorite") == false && $(event.target).hasClass("fa") == false)
 		{
 			$("div.stats", this).slideToggle();
 			$("div.reply", this).slideToggle();
@@ -178,7 +179,14 @@ $(document).ready(function(){
 	$("#stream").on("click", ".fa-star-o, .fa-star", function(event){
 		$(this).toggleClass("fa-star-o", "fa-star");
 		$(this).css("cursor", "pointer");
+		// if($())
 		$(this).css("color", "gold");
+	});
+
+	//Clicking the favorite button in .tweet-actions
+	$("#stream").on("click", ".favorite", function(event){
+		$(event.target).closest(".content").children("i").toggleClass("fa-star-o", "fa-star");
+		$(event.target).closest(".content").children("i").css("color", "gold");
 	});
 
 	/*******************************************/
