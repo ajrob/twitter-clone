@@ -136,6 +136,7 @@ $(document).ready(function(){
 			doPost($(tweetConsole).val());
 			//Clear previous text
 			$(tweetConsole).val("");
+			$("#char-count").text("140");
 			hideTweetControls($(tweetConsole));
 		}
 	});
