@@ -160,7 +160,9 @@ $(document).ready(function(){
 
 	$("#stream").on("click", '.tweet', function(event){
 		//Skip this event if clicking on the "Favorite" icon
-		if($(event.target).hasClass("favorite") == false && $(event.target).hasClass("fa") == false)
+		if($(event.target).hasClass("favorite") == false && 
+			$(event.target).hasClass("fa") == false && 
+			$(event.target).hasClass("tweet-compose") == false)
 		{
 			$("div.stats", this).slideToggle();
 			$("div.reply", this).slideToggle();
